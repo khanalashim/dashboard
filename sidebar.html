@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/438e88e73b.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+  <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-auth.js"></script>
+  
+  <!-- Add Firebase products that you want to use -->
+  <script src="https://www.gstatic.com/firebasejs/8.6.1/firebase-database.js"></script>
+  
+  
+    
+    <script>
+        function openNav() {
+  document.getElementById("sidebar").style.left = "0px";
+  
+}
+
+function closeNav() {
+  document.getElementById("sidebar").style.left = "-300px";
+
+}
+
+
+    </script>
+    <style>
+        *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    }
+    #sidebar{
+        position: fixed;
+        top: 0;
+        left: -300px;
+        background: #1f195c;
+        width: 300px;
+        height: 1200px;
+        text-align: center;
+        transition: 0.6s linear;   
+    }
+
+   
+    li{
+        margin-top: 80px;
+        
+    }
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    #cross{
+        position: fixed;
+        color: rgb(237, 231, 231);
+        margin-left: 100px;
+        z-index: -1;
+        top: 0;
+        font-size: 29px;
+        cursor: pointer;
+    }
+    #hamburger{
+        
+        color: #1f195c;
+        margin-left: 20px;
+        margin-top: 6px;
+        font-size: 29px;
+        cursor: pointer;
+    }
+
+    
+#logo{
+    background: rgb(41, 41, 158);
+    padding: 6px 8px;
+    border-radius: 32px;
+    color: rgb(253, 253, 255);
+    font-style: oblique;
+}
+#logo2{
+    color: rgb(21, 21, 99);
+    font-style: oblique;
+
+}
+    #icon1{
+    color: white;
+    background: orangered;
+    padding: 8px 14px;
+    border-radius: 24px;
+    margin-left: 20px;
+
+}
+
+#icon2{
+    color: white;
+    background: rgb(229, 191, 21);
+    padding: 8px 14px;
+    border-radius: 24px;
+    margin-left: 20px;
+
+}
+#icon3{
+    color: white;
+    background: rgb(0, 119, 255);
+    padding: 8px 14px;
+    border-radius: 24px;
+    margin-left: 20px;
+
+}
+#icon4{
+    color: white;
+    background: rgb(4, 224, 44);
+    padding: 8px 14px;
+    border-radius: 24px;
+    margin-left: 20px;
+
+}
+        
+        .main-content{
+    background: rgb(238, 237, 237);
+    height: 1200px;
+    width: 100%;
+}
+h1{
+    color: azure;
+    margin-top: 0px;
+    text-align: center;
+    font-weight: 500;
+    font-size: 34px;
+
+}
+.balance{
+    
+    height: 100px;
+    width: auto;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 34px;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+
+.current-value{
+    display: block;
+    height: 100px;
+    width: auto;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 34px;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+
+}
+.deposit{
+    display: block;
+    height: 100px;
+    width: auto;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 34px;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+.withdrawal{
+    display: block;
+    height: 100px;
+    width: auto;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 34px;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+.profit-details{
+    display: block;
+    height: 200px;
+    width: auto;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 34px;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+.profit-calculator{
+    display: block;
+    height: 200px;
+    width: auto;
+    background: rgb(255, 255, 255);
+    border-radius: 12px;
+    padding: 8px 10px;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 34px;
+    box-shadow:0 4px 8px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.10);
+}
+
+h2{
+    color: rgba(53, 16, 16, 0.804);
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+    
+}
+h3{
+    color: rgb(52, 50, 49);
+    margin-top: 5px;
+    text-align: center;
+    font-size: 22px;
+    font-weight: 100;
+    margin-right: 20px;
+
+}
+.bg{
+    background-image: linear-gradient(135deg, #CE9FFC 10%, #7367F0 100%);
+    height: 500px;
+    max-width: auto;
+
+}
+@media screen and (min-width: 60px) {
+    h1{
+    color: azure;
+    margin-top: 0px;
+    margin-left: 40%;
+    margin-right: 40%;
+    font-weight: 500;
+    font-size: 34px;
+        
+    }
+}
+    </style>
+</head>
+<body>
+    <div id="sidebar">
+        <ul>
+            <li><a href="sidebar.html">Dashboard</a></li>
+            <li><a href="deposit.html">Deposit</a></li>
+            <li><a href="">Withdraw</a></li>
+            <li><a href="">Transaction</a></li>
+        </ul>
+        
+        <i id="cross" class="fa-solid fa-xmark" onclick="closeNav()"></i>
+    </div>
+    
+    
+    <div class="main-content">
+        <div class="bg">
+
+
+            
+            <i id="hamburger" class="fa-solid fa-bars" onclick="openNav()"></i>
+            <h1><span id="logo">Blue</span><span id="logo2">haki</span></h1>
+            <div class="balance">
+                    <h2 id="one">TOTAL  BALANCE<i id="icon1" class="fa-solid fa-dollar-sign"></i></h2>
+                    <h3 id="total">0.000000000 TRX</h3>
+            </div>
+            <div class="current-value">
+                <h2 id="two">CURRENT VALUE<i id="icon2"  class="fa-solid fa-bomb"></i></h2>
+                <h3 id="current">0.000000000 TRX</h3>
+            </div>
+            <div class="deposit">
+                <h2 id="three">DEPOSIT<i id="icon3" class="fa-solid fa-sack-dollar"></i></h2>
+                <h3>0.000000000 TRX</h3>
+            </div>
+            <div class="withdrawal">
+                <h2 id="four">WITHDRAWAL<i id="icon4" class="fa-solid fa-hand-holding-dollar"></i></h2>
+                <h3>0.000000000 TRX</h3>
+            </div>
+            <div class="profit-details">
+                <h2 id="five">Profit Details</h2>
+                <h3>20-100 TRX =  <span style="color: rgb(26, 155, 26);">10% profit</span></h3>
+                <h3>100-500 TRX =  <span style="color: rgb(26, 155, 26);">20% profit</span></h3>
+                <h3>500-1000 TRX =  <span style="color: rgb(26, 155, 26);">30% profit</span></h3>
+                <h3>1000-4000 TRX = <span style="color: rgb(26, 155, 26);">40% profit</span> </h3>
+            </div>
+            <div class="profit-calculator">
+                <h2 id="six">Profit Calculator</h2>
+                <h3>0.000000000 TRX</h3>
+            </div>
+        </div>
+    </div>
+    
+    <script src="side.js"></script>
+</body>
+</html>
+</body>
+</html>
